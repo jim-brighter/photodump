@@ -1,0 +1,54 @@
+<!doctype html>
+<html ng-app="photosApp">
+
+<head>
+	<title>Images!</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<link href="css/home.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="mainCtrl">
+	<div class="top">
+		<p id="top-text">View my source on GitHub: <a href="https://github.com/jim-brighter/photodump-frontend">frontend</a> and <a href="https://github.com/jim-brighter/photodump-backend">backend</a>.
+			Or view <a href="{{mainUrlPath}}/swagger-ui.html">my API</a></p>
+	</div>
+	<div class="form">
+		<h3>Images!</h3>
+		<br>
+		<form>
+			<table>
+				<tr>
+					<td class="label-cell"><label for="title">Title: </label></td>
+					<td><input id="title" type="text" ng-model="title" placeholder="Cat" autofocus="autofocus"></td>
+				</tr>
+				<tr>
+					<td class="label-cell"><label for="url">URL: </label></td>
+					<td><input id="url" type="text" ng-model="url" placeholder="http://www.funnycatpictures.com/cat"></td>
+				</tr>
+				<tr>
+					<td class="label-cell"><label for="submitter">Submitter: </label></td>
+					<td><input id="submitter" type="text" ng-model="submitter" placeholder="Mr Cat"></td>
+				</tr>
+			</table>
+			<div class="btn-container">
+				<input ng-click="sendImage(title,url,submitter)" type="submit" id="submit" value="Submit Image" class="btn">
+				<button class="btn" ng-click="getImages()" id="get" value="get">Get All Images</button>
+			</div>
+		</form>
+	</div>
+	<br>
+	<div class="images">
+		<div class="image" ng-repeat="img in images" img-zoomer>
+			<h5>{{img.title}}</h5>
+			<img ng-src="{{img.url}}" title="{{img.title}}" alt="{{img.title}}">
+			<h6>FROM: {{img.submitter}}</h6>
+		</div>
+	</div>
+
+	<script src="js/jquery-3.1.1.min.js"></script>
+	<script src="js/angular.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+
+</html>

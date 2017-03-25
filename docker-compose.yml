@@ -1,0 +1,42 @@
+version: '2'
+services:
+  app-service:
+    image: jimbrighter/photodump-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db-service
+    networks:
+      backend:
+        aliases:
+          - app
+    environment:
+      - DB_USER=postgres
+      - DB_PASS=pass
+      - DB_URL=jdbc:postgresql://db/imagedb
+      - SPRING_PROFILES=local
+      
+  front-service:
+    image: jimbrighter/photodump-frontend
+    ports:
+      - "9001:9001"
+    networks:
+      backend:
+        aliases:
+          - front
+  
+  db-service:
+    image: jimbrighter/photodump-db
+    ports:
+      - "5432:5432"
+    networks:
+      backend:
+        aliases:
+          - db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pass
+
+networks:
+  backend:
+  
