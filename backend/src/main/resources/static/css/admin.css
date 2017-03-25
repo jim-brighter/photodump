@@ -1,0 +1,84 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+* {
+    font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background-color: #f2f2f2;
+    height: 100%;
+    width: 100%;
+}
+
+#img-table {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 0px solid white;
+	border-collapse: collapse;
+	box-shadow: 0px 0px 4px -1px #444444;
+	background-color: #fff;
+}
+
+#img-table-head {
+	background-color: #ff0066;
+	color: white;
+	box-shadow: 0px 2px 4px -1px #444444;
+}
+
+th {
+	text-align: left;
+}
+
+.padded-row>th, .padded-row>td {
+	padding: 5px 10px 5px 10px;
+}
+
+.body-row:hover {
+	background-color: #f2f2f2;
+}
+
+#btn-container {
+	margin-top: 5%;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.btn {
+    margin: 0em 1em 0em 1em;
+    padding: .3em 1em .3em 1em;
+    background-color: #ff0066;
+    border: 1px solid #ff0066;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 0px 0px 3px -1px #444444;
+    cursor: pointer;
+    font-weight: bold;
+    float: left;
+}
+
+.btn:hover {
+    opacity: .8;
+}
+
+.btn:disabled {
+	margin: 0em 1em 0em 1em;
+    padding: .3em 1em .3em 1em;
+    background-color: #ff0066;
+    border: 1px solid #ff0066;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 0px 0px 3px -1px #444444;
+    font-weight: bold;
+    opacity: .5;
+    cursor: default;
+}
+
+#logout-form {
+	display: inline-block;
+	float: right;
+}

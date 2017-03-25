@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<style>
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+* {
+    font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    background-color: #f2f2f2;
+}
+
+form {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10%;
+    font-size: 16pt;
+    vertical-align: center;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+td, button {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 18pt;
+}
+
+input {
+    font-size: 14pt;
+    padding: 4px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    padding: 6px 10px 6px 10px;
+    background-color: #ff0066;
+    border: 1px solid #ff0066;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 0px 0px 3px -1px #444444;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: .8;
+}
+
+</style>
+</head>
+<body>
+	<form action="/login" method="post">
+	   <h1>Photodump Admin Login</h1>
+	    <table>
+	       <tr>
+	           <td><label for="username">Username: </label></td>
+	           <td><input type="text" id="username" name="username" autofocus="autofocus"/><br/></td>
+	       </tr>
+	       <tr>
+	           <td><label for="password">Password: </label></td>
+	           <td><input type="password" id="password" name="password"/><br/></td>
+	       </tr>
+	    </table>
+        <button type="submit" name="submit" title="submit">Login</button>
+	</form>
+</body>
+</html>

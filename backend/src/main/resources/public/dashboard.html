@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="console" lang="en">
+<head>
+<link href="css/admin.css" type="text/css" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body ng-controller="consoleCtrl">
+
+	<table id="img-table">
+		<thead id="img-table-head">
+			<tr class="padded-row">
+				<th></th>
+				<th>ID</th>
+				<th>Image Title</th>
+				<th>Image URL</th>
+				<th>Submitter</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="img in data" class="padded-row body-row">
+				<td><input type="checkbox" ng-model="toDelete"
+					name="toDelete[]" value="{{img.id}}" ng-click="toggleItem(img.id)"></td>
+				<td>{{img.id}}</td>
+				<td>{{img.title}}</td>
+				<td><a href="{{img.url}}">{{img.url}}</a></td>
+				<td>{{img.submitter}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div id="btn-container">
+		<button ng-click="deleteImages(toDelete)" ng-disabled="toDelete.length <= 0" class="btn">Delete</button>
+		<button ng-click="saveChanges(changes)" ng-disabled="changes.length <= 0" class="btn">Save</button>
+		<form action="/logout" method="post" id="logout-form">
+            <button type="submit" name="submit" title="submit" value="Logout" class="btn">Logout</button>
+        </form>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+	<script src="js/dashboard.js"></script>
+</body>
+</html>
