@@ -1,38 +1,38 @@
 #!/bin/bash
 
 set -e
+set -x
 
 docker-compose down
 
+function build() {
+  ./gradlew assemble
+
+  docker-compose build
+}
+
+function push() {
+  docker push jimbrighter/photodump-frontend
+  docker push jimbrighter/photodump-backend
+}
+
 if [ "$1" == "clean" ]; then
     set +e
+    ./gradlew clean
+    docker-compose down
     docker rm $(docker ps -a -f status=exited | awk "{print \$1}")
     docker rmi $(docker images | grep "<none>" | awk "{print \$3}")
     docker volume rm $(docker volume ls | awk "{print \$2}")
     docker network rm $(docker network ls | grep "photodump" | awk "{print \$1}")
-    
+
+elif [ "$1" == "build" ]; then
+    build
+
 elif [ "$1" == "push" ]; then
-    cd ../photodump-frontend
-    docker build -f Dockerfile -t jimbrighter/photodump-frontend .
+    build
+    push
 
-    cd ../photodump-backend
-    ./gradlew assemble
-    docker build -f Dockerfile -t jimbrighter/photodump-backend .
-
-    docker push jimbrighter/photodump-frontend
-    docker push jimbrighter/photodump-backend
-    
 else
-    cd ../photodump-frontend
-    docker build -f Dockerfile -t jimbrighter/photodump-frontend .
-    
-    cd ../photodump-backend
-    
-    docker build -f dockerfile-db -t jimbrighter/photodump-db .
-    
-    ./gradlew assemble
-    
-    docker build -f Dockerfile -t jimbrighter/photodump-backend .
-    
+    build
     docker-compose up
 fi

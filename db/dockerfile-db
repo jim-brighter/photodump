@@ -1,2 +1,2 @@
 FROM postgres
-ADD db/init.sh /docker-entrypoint-initdb.d/init.sh
+ADD init.sh /docker-entrypoint-initdb.d/init.sh
