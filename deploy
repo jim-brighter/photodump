@@ -3,8 +3,6 @@
 set -e
 set -x
 
-docker-compose down
-
 function build() {
   ./gradlew assemble
 
@@ -18,13 +16,8 @@ function push() {
 
 if [ "$1" == "clean" ]; then
     set +e
-    ./gradlew clean
-    docker-compose down
-    docker rm $(docker ps -a -f status=exited | awk "{print \$1}")
-    docker rmi $(docker images | grep "<none>" | awk "{print \$3}")
-    docker volume rm $(docker volume ls | awk "{print \$2}")
-    docker network rm $(docker network ls | grep "photodump" | awk "{print \$1}")
-
+    docker-compose down -v --remove-orphans
+    
 elif [ "$1" == "build" ]; then
     build
 
@@ -32,7 +25,12 @@ elif [ "$1" == "push" ]; then
     build
     push
 
+elif [ "$1" == "silent" ]; then
+    build
+    docker-compose up -d
+    
 else
     build
     docker-compose up
 fi
+
