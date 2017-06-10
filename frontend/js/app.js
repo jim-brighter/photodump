@@ -1,7 +1,7 @@
 var photosApp = angular.module("photosApp", []);
 
 photosApp.constant("mainUrl", {
-	"path": "http://photodump.xyz:8080"
+	"path": "http://67.205.153.26/:8080"
 	//"path": "http://localhost:8080"
 });
 
