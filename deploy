@@ -10,14 +10,13 @@ function build() {
 }
 
 function push() {
-  docker push jimbrighter/photodump-frontend
-  docker push jimbrighter/photodump-backend
+  docker-compose push
 }
 
 if [ "$1" == "clean" ]; then
     set +e
     docker-compose down -v --remove-orphans
-    
+
 elif [ "$1" == "build" ]; then
     build
 
@@ -28,9 +27,8 @@ elif [ "$1" == "push" ]; then
 elif [ "$1" == "silent" ]; then
     build
     docker-compose up -d
-    
+
 else
     build
     docker-compose up
 fi
-
