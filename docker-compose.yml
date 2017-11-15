@@ -37,7 +37,7 @@ services:
       dockerfile: dockerfile-db
     image: jimbrighter/photodump-db:latest
     ports:
-      - "5432:5432"
+      - "5454:5432"
     networks:
       backend:
         aliases:

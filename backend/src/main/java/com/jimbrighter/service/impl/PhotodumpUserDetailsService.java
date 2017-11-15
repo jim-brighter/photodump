@@ -1,6 +1,7 @@
-package com.jimbrighter.service;
+package com.jimbrighter.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.inject.Inject;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,7 +13,7 @@ import com.jimbrighter.entity.wrapper.PhotodumpUserDetails;
 @Service
 public class PhotodumpUserDetailsService implements UserDetailsService {
 
-	@Autowired
+	@Inject
 	CredentialsService credentialsService;
 	
 	@Override

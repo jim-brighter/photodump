@@ -1,5 +1,7 @@
 package com.jimbrighter.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "IMAGES")
-public class Image {
+public class Image implements Serializable {
+
+	private static final long serialVersionUID = 4627997033693883334L;
 
 	@Id
 	@SequenceGenerator(name = "image_gen", sequenceName = "IMAGE_SEQ")
@@ -29,7 +33,6 @@ public class Image {
 
 	public Image() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Image(String title, String url, String submitter) {
@@ -37,6 +40,10 @@ public class Image {
 		this.title = title;
 		this.url = url;
 		this.submitter = submitter;
+	}
+	
+	public Image(int id) {
+		this.id = (long) id;
 	}
 
 	public String getTitle() {
@@ -71,6 +78,4 @@ public class Image {
 	public String toString() {
 		return "Image [id=" + id + ", title=" + title + ", url=" + url + ", submitter=" + submitter + "]";
 	}
-	
-	
 }
