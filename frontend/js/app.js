@@ -2,7 +2,6 @@ var photosApp = angular.module("photosApp", []);
 
 photosApp.constant("mainUrl", {
 	"path": "http://67.205.153.26:8080"
-	//"path": "http://localhost:8080"
 });
 
 photosApp.controller("mainCtrl", ["$scope", "$http", "mainUrl", function($scope, $http, mainUrl) {

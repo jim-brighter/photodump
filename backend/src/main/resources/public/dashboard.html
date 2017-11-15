@@ -20,7 +20,7 @@
 		<tbody>
 			<tr ng-repeat="img in data" class="padded-row body-row">
 				<td><input type="checkbox" ng-model="toDelete"
-					name="toDelete[]" value="{{img.id}}" ng-click="toggleItem(img.id)"></td>
+					name="toDelete[]" value="{{img}}" ng-click="toggleItem(img.id)"></td>
 				<td>{{img.id}}</td>
 				<td>{{img.title}}</td>
 				<td><a href="{{img.url}}">{{img.url}}</a></td>

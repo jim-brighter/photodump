@@ -1,14 +1,11 @@
 package com.jimbrighter.dao;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.jimbrighter.entity.Image;
 
-public interface ImageDAO {
+public interface ImageDAO extends JpaRepository<Image, Long>{
 
-	public Image getImage(long id);
-	public List<Image> getAllImages();
-	public boolean createImage(String title, String url, String submitter);
-	public boolean deleteImage(long id);
-	public boolean updateImage(Image image);
+	public Image findById(long id);
+
 }
