@@ -26,7 +26,6 @@ photosApp.controller("mainCtrl", ["$scope", "$http", "mainUrl", function($scope,
 			$scope.getImages();
 		}).error(function(err) {
 			alert("submit failed!");
-			console.log(err);
 		});
 	}
 }]);
