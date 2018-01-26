@@ -12,7 +12,7 @@ public class WebConfigLocal extends BaseWebConfig {
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/images/**")
 				.allowedOrigins("*");
-		registry.addMapping("/status")
+		registry.addMapping("/health")
 				.allowedOrigins("*");
 		registry.addMapping("/admin/**")
 				.allowedOrigins("http://localhost:8080");

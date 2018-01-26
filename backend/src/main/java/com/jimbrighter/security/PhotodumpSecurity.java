@@ -24,7 +24,7 @@ public class PhotodumpSecurity extends WebSecurityConfigurerAdapter {
 			csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/images/**").permitAll()
-			.antMatchers("/status").permitAll()
+			.antMatchers("/health").permitAll()
 			.antMatchers("/dashboard").authenticated()
 			.antMatchers("/admin/**").authenticated()
 			.antMatchers("/**").authenticated()
@@ -43,6 +43,11 @@ public class PhotodumpSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
-		.antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**");
+		.antMatchers("/v2/api-docs", 
+				"/configuration/ui", 
+				"/swagger-resources", 
+				"/configuration/security", 
+				"/swagger-ui.html", 
+				"/webjars/**");
 	}
 }
