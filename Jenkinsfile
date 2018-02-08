@@ -1,5 +1,6 @@
 node {
 	stage("INIT") {
+		deleteDir()
 		sh """
 			git clone git@github.com:jim-brighter/photodump.git -b ${GIT_BRANCH} .
 			git fetch -p
