@@ -1,5 +1,12 @@
 node {
 	stage("INIT") {
+		checkout(
+			[$class: 'GitSCM',
+			branches: [[name: "${GIT_BRANCH}"]],
+			userRemoteConfigs: [[
+				url: 'git@github.com:jim-brighter/photodump.git'
+			]]]
+		)
 		load "./jenkins.properties"
 		println TAG_VERSION
 	}
