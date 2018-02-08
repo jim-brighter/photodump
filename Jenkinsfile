@@ -1,12 +1,9 @@
 node {
 	stage("INIT") {
-		checkout(
-			[$class: 'GitSCM',
-			branches: [[name: "${GIT_BRANCH}"]],
-			userRemoteConfigs: [[
-				url: 'git@github.com:jim-brighter/photodump.git'
-			]]]
-		)
+		sh """
+			git clone git@github.com:jim-brighter/photodump.git -b ${GIT_BRANCH} .
+			git fetch -p
+		"""
 		load "./jenkins.properties"
 		println TAG_VERSION
 	}
@@ -14,10 +11,9 @@ node {
 	stage("MERGE") {
 		if (GIT_BRANCH == "ci") {
 			sh """
-				git fetch -p
 				git checkout master
-				git merge --abort ci
-				git push origin master 
+				git merge ci
+				git push origin master
 			"""
 		}
 		else if (GIT_BRANCH == "master") {
