@@ -1,5 +1,5 @@
 stage("INIT") {
-	load "${WORKSPACE}/jenkins.properties"
+	load "jenkins.properties"
 	println TAG_VERSION
 }
 
