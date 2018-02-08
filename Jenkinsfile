@@ -1,3 +1,5 @@
+def TAG_VERSION
+
 node {
 	stage("INIT") {
 		deleteDir()
@@ -6,7 +8,9 @@ node {
 			git fetch -p
 		"""
 		load "./jenkins.properties"
-		println TAG_VERSION
+		println "App version: ${APP_VERSION}"
+		TAG_VERSION = "${APP_VERSION}.${env.BUILD_NUMBER}"
+		currentBuild.displayName = "${GIT_BRANCH}-${TAG_VERSION}"
 	}
 
 	stage("MERGE") {
@@ -20,7 +24,7 @@ node {
 		else if (GIT_BRANCH == "master") {
 			sh """
 				git tag ${TAG_VERSION}
-				git push ${TAG_VERSION}
+				git push origin ${TAG_VERSION}
 			"""
 		}
 	}
