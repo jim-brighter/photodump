@@ -1,7 +1,7 @@
-FROM node
+FROM node:alpine
 EXPOSE 9001
 
-RUN /bin/bash -c 'npm install http-server -g'
+RUN /bin/ash -c 'npm install http-server -g'
 
 ADD index.html app/index.html
 ADD css/ app/css/
