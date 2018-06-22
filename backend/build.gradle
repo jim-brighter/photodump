@@ -1,16 +1,7 @@
-buildscript {
-	repositories {
-		mavenCentral()
-	}	
-	
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
-	}
-}
-
 plugins {
     id "java"
     id "eclipse"
+    id 'org.springframework.boot' version '1.5.10.RELEASE'
     id "org.sonarqube" version "2.6"
 }
 
