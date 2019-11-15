@@ -1,50 +1,45 @@
 version: '2'
+networks:
+  photodump:
 services:
   app-service:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    container_name: photodump
     image: jimbrighter/photodump-backend:latest
     ports:
       - "8080:8080"
+    mem_limit: 512m
+    restart: always
     depends_on:
       - db-service
     networks:
-      backend:
+      photodump:
         aliases:
           - app
-    environment:
-      - DB_USER=postgres
-      - DB_PASS=pass
-      - DB_URL=jdbc:postgresql://db/imagedb
-      - SPRING_PROFILES=local
+    env_file: secrets.env
 
   front-service:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    container_name: photodump-front
     image: jimbrighter/photodump-frontend:latest
     ports:
-      - "9001:9001"
+      - "80:9001"
+    mem_limit: 50m
+    restart: always
     networks:
-      backend:
+      photodump:
         aliases:
           - front
 
   db-service:
-    build:
-      context: ./db
-      dockerfile: dockerfile-db
+    container_name: photodump-db
     image: jimbrighter/photodump-db:latest
     ports:
-      - "5454:5432"
+      - "5432:5432"
+    mem_limit: 50m
+    restart: always
     networks:
-      backend:
+      photodump:
         aliases:
           - db
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=pass
-
-networks:
-  backend:
+    volumes:
+      - /home/jbrighter/postgres:/var/lib/postgresql/data
+    env_file: secrets.env
