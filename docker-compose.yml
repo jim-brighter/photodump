@@ -40,6 +40,4 @@ services:
       photodump:
         aliases:
           - db
-    volumes:
-      - /home/jbrighter/postgres:/var/lib/postgresql/data
     env_file: secrets.env

@@ -1,4 +1,2 @@
 # photodump
-Single repo for whole photodump app
-
-Applications are in their respective folders. DB folder contains dev database dependency
+This project has been archived as I no longer work on it. If you would like to run it locally yourself, you can do so with the included docker-compose.yml file.
